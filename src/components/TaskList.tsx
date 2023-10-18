@@ -27,26 +27,29 @@ const TaskList = () => {
 
   return (
     <div className="container">
-          <h1>Liste des tâches</h1>
+      <h1>Liste des tâches</h1>
       <TaskFormAdd onAddTask={addTask} />
       <>
-        <ul>
+        <ol>
           {tasks.map((task) => (
-            <li
-              key={task.id}
-              style={{
-                textDecoration: task.completed ? "line-through" : "none",
-              }}
-            >
-              <span onClick={() => handleTaskSpanClick(task.id)}>
+            <li key={task.id}>
+              <span
+                style={{
+                  textDecoration: task.completed ? "line-through" : "none",
+                }}
+                onClick={() => handleTaskSpanClick(task.id)}
+              >
                 {task.text}
               </span>
-              <button onClick={() => handleTaskDeleteClick(task.id)}>
+              <button
+                className="delete"
+                onClick={() => handleTaskDeleteClick(task.id)}
+              >
                 Supprimer
               </button>
             </li>
           ))}
-        </ul>
+        </ol>
       </>
     </div>
   );

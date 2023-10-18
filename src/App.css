@@ -1,3 +1,20 @@
+:root {
+  --text-color: #13061D;
+  --bg-color: #FDFBFE;
+  --primary-color: #A7E274;
+  --secondary-color: #B3EFD3;
+  --accent-color: #66B125;
+}
+
+body {
+  line-height: 1.4;
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--text-color);
+  background-color: var(--bg-color);
+  text-align: center;
+}
+
 .container {
   height: 100vh;
   display: flex;
@@ -6,8 +23,92 @@
   flex-direction: column;
 }
 
-li {
-  margin-top: 15px;
-  font-size: 1.05rem;
+button {
+  margin-top: 10px;
+  border: 0;
   cursor: pointer;
+  background-color: var(--primary-color);
+  border-radius: 50px;
+  padding: 8px 16px;
+  line-height: 26px;
+  transition: all 0.3s ease;
+}
+
+button.delete {
+  margin: 0 0 0 10px;
+  padding: 2px 4px;
+  background-color: #ff8b7e;
+}
+
+button:hover {
+  background-color: var(--accent-color);
+}
+
+button.delete:hover {
+  background-color: #e74c3c;
+}
+
+input {
+  box-shadow: inset var(--primary-color) 0 0 0 2px;
+  border: 0;
+  appearance: none;
+  width: 100%;
+  position: relative;
+  border-radius: 3px;
+  padding: 9px 12px;
+  height: 40px;
+  transition: all 0.2s ease;
+}
+
+input:hover {
+  box-shadow: 0 0 0 0 var(--secondary-color) inset, var(--accent-color) 0 0 0 2px;
+}
+
+input:focus {
+  background: #fff;
+  outline: 0;
+  box-shadow: 0 0 0 0 var(--secondary-color) inset, var(--accent-color) 0 0 0 3px;
+}
+
+        
+ol {
+  counter-reset: li; 
+  list-style: none; 
+  padding: 0;
+  text-shadow: 0 1px 0 var(--secondary-color);
+}
+
+ol li {
+  display: flex;
+  align-items: center;
+}
+
+ol span {
+  position: relative;
+  display: block;
+  padding: .4em .4em .4em 2em;
+  margin: .5em 0;
+  background: var(--primary-color);
+  text-decoration: none;
+  border-radius: .3em;
+  transition: .3s ease-out;
+}
+
+ol span:hover { background: var(--accent-color); }
+ol span:hover:before { transform: rotate(360deg); }
+ol span:before {
+  content: counter(li);
+  counter-increment: li;
+  position: absolute;
+  left: -1.3em;
+  top: 50%;
+  margin-top: -1.3em;
+  background: var(--secondary-color);
+  height: 2em;
+  width: 2em;
+  line-height: 2em;
+  border: .3em solid var(--bg-color);
+  font-weight: bold;
+  border-radius: 2em;
+  transition: all .3s ease-out;
 }

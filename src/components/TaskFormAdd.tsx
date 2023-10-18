@@ -16,11 +16,14 @@ export const TaskFormAdd: React.FC<TaskFormAddProps> = ({ onAddTask }) => {
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
+    console.log(value);
     setNewTask({ ...newTask, text: value });
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    if (newTask.text === "")
+        return;
     onAddTask(newTask);
     setNewTask(task);
   };
