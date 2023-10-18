@@ -9,4 +9,5 @@
 li {
   margin-top: 15px;
   font-size: 1.05rem;
+  cursor: pointer;
 }

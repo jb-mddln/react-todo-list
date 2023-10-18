@@ -1,20 +1,28 @@
 import React, { useState } from "react";
+import { Task } from "../models/Task";
 
 interface TaskFormAddProps {
-  onAddTask: (text: string) => void;
+  onAddTask: (task: Task) => void;
 }
 
 export const TaskFormAdd: React.FC<TaskFormAddProps> = ({ onAddTask }) => {
-  const [newTaskText, setNewTaskText] = useState("");
+  const task: Task = {
+    id: Date.now(),
+    text: "",
+    completed: false,
+  };
+
+  const [newTask, setNewTask] = useState<Task>(task);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setNewTaskText(e.target.value);
+    const { value } = e.target;
+    setNewTask({ ...newTask, text: value });
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    onAddTask(newTaskText);
-    setNewTaskText("");
+    onAddTask(newTask);
+    setNewTask(task);
   };
 
   return (
@@ -22,7 +30,7 @@ export const TaskFormAdd: React.FC<TaskFormAddProps> = ({ onAddTask }) => {
       <input
         type="text"
         placeholder="Nouvelle tâche"
-        value={newTaskText}
+        value={newTask.text}
         onChange={handleInputChange}
       />
       <button type="submit">Ajouter</button>
